@@ -37,7 +37,7 @@ header p {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.video-container vds-video {
+video {
     position: absolute;
     top: 0;
     left: 0;

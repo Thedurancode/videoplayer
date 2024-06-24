@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Argentina vs Guatemala</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack-player/dist/vidstack.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@vidstack/player/dist/index.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,7 +17,8 @@
         </header>
         <div class="video-container">
             <vds-media>
-                <vds-video src="https://www3.cde.ca.gov/download/rod/big_buck_bunny.mp4" controls playsinline>
+                <vds-video controls>
+                    <source src="https://www3.cde.ca.gov/download/rod/big_buck_bunny.mp4" type="video/mp4">
                     <track src="chapters.vtt" kind="chapters" srclang="en" label="Chapters">
                 </vds-video>
             </vds-media>
@@ -28,22 +29,26 @@
             <button><i class="fas fa-cog"></i> Settings</button>
         </nav>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vidstack-player/dist/vidstack.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@vidstack/player"></script>
     <script>
-        const player = document.querySelector('vds-media');
+        document.addEventListener('DOMContentLoaded', () => {
+            const player = document.querySelector('vds-media');
+            const playPauseButton = document.getElementById('play-pause');
+            const fullscreenButton = document.getElementById('fullscreen');
 
-        document.getElementById('play-pause').addEventListener('click', () => {
-            if (player.playing) {
-                player.pause();
-                document.getElementById('play-pause').innerHTML = '<i class="fas fa-play"></i> Play';
-            } else {
-                player.play();
-                document.getElementById('play-pause').innerHTML = '<i class="fas fa-pause"></i> Pause';
-            }
-        });
+            playPauseButton.addEventListener('click', () => {
+                if (player.paused) {
+                    player.play();
+                    playPauseButton.innerHTML = '<i class="fas fa-pause"></i> Pause';
+                } else {
+                    player.pause();
+                    playPauseButton.innerHTML = '<i class="fas fa-play"></i> Play';
+                }
+            });
 
-        document.getElementById('fullscreen').addEventListener('click', () => {
-            player.requestFullscreen();
+            fullscreenButton.addEventListener('click', () => {
+                player.requestFullscreen();
+            });
         });
     </script>
 </body>
