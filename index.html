@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Argentina vs Guatemala</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack-player/dist/vidstack.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Argentina vs Guatemala</h1>
+            <p>3 Estrellas Tour: Argentina vs. Guatemala in Washington D.C.</p>
+            <p>Date: June 14, 2024</p>
+        </header>
+        <div class="video-container">
+            <vds-media>
+                <vds-video src="https://www3.cde.ca.gov/download/rod/big_buck_bunny.mp4" controls playsinline>
+                    <track src="chapters.vtt" kind="chapters" srclang="en" label="Chapters">
+                </vds-video>
+            </vds-media>
+        </div>
+        <nav class="navbar">
+            <button id="play-pause"><i class="fas fa-play"></i> Play</button>
+            <button id="fullscreen"><i class="fas fa-expand"></i> Fullscreen</button>
+            <button><i class="fas fa-cog"></i> Settings</button>
+        </nav>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vidstack-player/dist/vidstack.js"></script>
+    <script>
+        const player = document.querySelector('vds-media');
+
+        document.getElementById('play-pause').addEventListener('click', () => {
+            if (player.playing) {
+                player.pause();
+                document.getElementById('play-pause').innerHTML = '<i class="fas fa-play"></i> Play';
+            } else {
+                player.play();
+                document.getElementById('play-pause').innerHTML = '<i class="fas fa-pause"></i> Pause';
+            }
+        });
+
+        document.getElementById('fullscreen').addEventListener('click', () => {
+            player.requestFullscreen();
+        });
+    </script>
+</body>
+</html>
